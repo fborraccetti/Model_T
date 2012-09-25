@@ -1,2 +1,2 @@
 	
-	function update(){
+	function update($array=null){
