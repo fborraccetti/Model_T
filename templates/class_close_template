@@ -1,0 +1,9 @@
+ 
+		$res = $this->db->get('tabella1');
+
+
+                return $res->result();
+	}
+
+
+}

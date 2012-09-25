@@ -1,0 +1,4 @@
+		$this->db->update($this);
+		return $this->db->insert_id();
+		//print_r($this->db->last_query()); //per vedere la query appena eseguita
+	}

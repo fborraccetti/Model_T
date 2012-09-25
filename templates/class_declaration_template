@@ -1,0 +1,3 @@
+<?
+class Classe1_m extends CI_Model {
+

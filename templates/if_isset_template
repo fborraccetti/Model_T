@@ -1,0 +1,3 @@
+                if(isset($this->colonna1)){
+                        $this->db->where("colonna1",$this->colonna1);
+                }
