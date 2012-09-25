@@ -15,13 +15,13 @@ echo "" > "$table"_m.php
 sed -e "s/Classe1/$table/g" < templates/class_declaration > 1_"$table"
 
 # Dichiara i metodi set
-cat templates/set_declaration > 3_"$table"	
+cat templates/function_set_declaration > 3_"$table"	
 
 # Dichiara i metodi get
-cat templates/get_declaration > 4_"$table"
+cat templates/function_get_declaration > 4_"$table"
 
 # Dichiara il metodi update
-cat templates/update_declaration > 5_"$table"	
+cat templates/function_update_declaration > 5_"$table"	
 
 columns=$( mysql -u "$mysql_user" -p"$mysql_password" --skip-column-names --raw -e "show columns from $table" "$mysql_db"  | cut -f1 )
 
