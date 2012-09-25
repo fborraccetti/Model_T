@@ -13,17 +13,16 @@ fi
 echo "" > "$table"_m.php
 
 # Dichiara la classe
-sed -e "s/Classe1/$table/g" < templates/class_declaration_template > 1_"$table"
+sed -e "s/Classe1/$table/g" < templates/class_declaration > 1_"$table"
 
-# Dichiara i metodi get e set
-cat templates/function_declaration_template > 3_"$table"	
+# Dichiara i metodi set
+cat templates/set_declaration > 3_"$table"	
+
+# Dichiara i metodi get
+cat templates/get_declaration > 4_"$table"
 
 # Dichiara il metodi update
-cat templates/update_declaration_template > 5_"$table"	
-
-
-# Chiude la classe
-sed -e "s/tabella1/$table/g" templates/class_close_template > 6_"$table"
+cat templates/update_declaration > 5_"$table"	
 
 columns=$( mysql -u "$mysql_user" -p"$mysql_password" --skip-column-names --raw -e "show columns from $table" "$mysql_db"  | cut -f1 )
 
@@ -32,14 +31,21 @@ for column in $columns
 	do 
 	echo $column
 	# Dichiara le variabili
-	sed -e "s/variabile1/$column/g" < templates/var_declaration_template >> 2_"$table"
+	sed -e "s/variabile1/$column/g" < templates/var_declaration >> 2_"$table"
 
-	# Setta gli if delle colonne
-	sed -e "s/colonna1/$column/g" < templates/if_isset_template >> 4_"$table" 
-	sed -e "s/colonna1/$column/g" < templates/if_isset_template >> 5_"$table" 
+	# Setta gli if delle colonne per funzione get
+	sed -e "s/colonna1/$column/g" < templates/if_isset >> 4_"$table" 
+	# Setta gli if delle colonne per funzione update
+	sed -e "s/colonna1/$column/g" < templates/if_isset >> 5_"$table" 
 done
 
-cat templates/close_update_declaration >> 5_"$table"
+# Close method set
+cat templates/function_set_close >> 3_"$table"	
+cat templates/function_get_close >> 4_"$table"	
+cat templates/function_update_close >> 5_"$table"	
+
+# Chiude la classe
+sed -e "s/tabella1/$table/g" templates/class_close_template > 6_"$table"
 
 # Crea il file definitivo
 for ((i=1; i<7; i++))
