@@ -39,9 +39,9 @@ for column in $columns
 done
 
 # Close method set
-cat templates/function_set_close >> 3_"$table"	
-cat templates/function_get_close >> 4_"$table"	
-cat templates/function_update_close >> 5_"$table"	
+sed -e "s/tabella1/$table/g" templates/function_set_close >> 3_"$table"	
+sed -e "s/tabella1/$table/g" templates/function_get_close >> 4_"$table"	
+sed -e "s/tabella1/$table/g" templates/function_update_close >> 5_"$table"	
 
 # Chiude la classe
 sed -e "s/tabella1/$table/g" templates/class_close > 6_"$table"
