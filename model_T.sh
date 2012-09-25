@@ -1,8 +1,9 @@
 #!/bin/bash
 
 table="$1"
-
-source config.sh
+mysql_db="databasename"
+mysql_user="username"
+mysql_password="password"
 
 if [[ -z "$1" ]]
 	then
@@ -29,7 +30,7 @@ columns=$( mysql -u "$mysql_user" -p"$mysql_password" --skip-column-names --raw 
 
 for column in $columns
 	do 
-	echo $column
+	#echo $column
 	# Dichiara le variabili
 	sed -e "s/variabile1/$column/g" < templates/var_declaration >> 2_"$table"
 
