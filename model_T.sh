@@ -1,9 +1,7 @@
 #!/bin/bash
 
 table="$1"
-mysql_db="databasename"
-mysql_user="username"
-mysql_password="password"
+source config.sh
 
 if [[ -z "$1" ]]
 	then
