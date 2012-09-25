@@ -46,7 +46,7 @@ cat templates/function_get_close >> 4_"$table"
 cat templates/function_update_close >> 5_"$table"	
 
 # Chiude la classe
-sed -e "s/tabella1/$table/g" templates/class_close_template > 6_"$table"
+sed -e "s/tabella1/$table/g" templates/class_close > 6_"$table"
 
 # Crea il file definitivo
 for ((i=1; i<7; i++))
