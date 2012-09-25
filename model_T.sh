@@ -20,11 +20,11 @@ sed -e "s/Classe1/$table/g" < templates/class_declaration_template > 1_"$table"
 cat templates/function_declaration_template > 3_"$table"	
 
 # Dichiara il metodi update
-cat templates/update_declaration_template > 6_"$table"	
+cat templates/update_declaration_template > 5_"$table"	
 
 
 # Chiude la classe
-sed -e "s/tabella1/$table/g" templates/class_close_template > 5_"$table"
+sed -e "s/tabella1/$table/g" templates/class_close_template > 6_"$table"
 
 columns=$( mysql -u "$mysql_user" -p"$mysql_password" --skip-column-names --raw -e "show columns from $table" "$mysql_db"  | cut -f1 )
 
@@ -37,10 +37,10 @@ for column in $columns
 
 	# Setta gli if delle colonne
 	sed -e "s/colonna1/$column/g" < templates/if_isset_template >> 4_"$table" 
-	sed -e "s/colonna1/$column/g" < templates/if_isset_template >> 6_"$table" 
+	sed -e "s/colonna1/$column/g" < templates/if_isset_template >> 5_"$table" 
 done
 
-cat templates/close_update_declaration >> 6_"$table"
+cat templates/close_update_declaration >> 5_"$table"
 
 # Crea il file definitivo
 for ((i=1; i<7; i++))
