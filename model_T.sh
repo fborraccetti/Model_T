@@ -11,7 +11,9 @@ fi
 
 filename=$( echo $table | tr "[:upper:]" "[:lower:]" );
 
-echo "" > "$filename"_m.php
+#echo "" > "$filename"_m.php
+
+touch "$filename"_m.php
 
 # Dichiara la classe
 sed -e "s/Classe1/$table/g" < templates/class_declaration > 1_"$filename"
