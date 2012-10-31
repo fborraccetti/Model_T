@@ -9,7 +9,7 @@ if [[ -z "$1" ]]
 	exit 1
 fi
 
-echo "" > "${table~}"_m.php
+echo "" > "$( echo $table | tr "[:upper:]" "[:lower:]" )"_m.php
 
 # Dichiara la classe
 sed -e "s/Classe1/$table/g" < templates/class_declaration > 1_"$table"
