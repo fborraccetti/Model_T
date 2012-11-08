@@ -1,6 +1,6 @@
 Credits
-========<>
-
+========
+Initially Developed by Stefano Cherchi
 
 
 Model_T
