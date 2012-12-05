@@ -1,7 +1,7 @@
-Model_T
-=======
 
-#Create easy Codeigniter model from mysql table
+
+
+#Model_T: Create easy Codeigniter model from mysql table
 
 ##What this do
 
@@ -63,6 +63,6 @@ Copy table_test_m.php in your model directory and begin develop!
 
 Credits
 ========
-Initially Developed by Stefano Cherchi
+Initially Developed by Stefano Cherchi, thanks for main ideas and first script file. 
 
 
